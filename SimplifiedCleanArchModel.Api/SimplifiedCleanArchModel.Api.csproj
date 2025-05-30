@@ -14,4 +14,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SimplifiedCleanArchModel.Application\SimplifiedCleanArchModel.Application.csproj" />
+    <ProjectReference Include="..\SimplifiedCleanArchModel.Domain\SimplifiedCleanArchModel.Domain.csproj" />
+    <ProjectReference Include="..\SimplifiedCleanArchModel.Infrastructure\SimplifiedCleanArchModel.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

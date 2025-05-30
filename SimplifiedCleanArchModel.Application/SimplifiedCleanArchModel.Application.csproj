@@ -12,4 +12,9 @@
     <Folder Include="Services\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SimplifiedCleanArchModel.Domain\SimplifiedCleanArchModel.Domain.csproj" />
+    <ProjectReference Include="..\SimplifiedCleanArchModel.Infrastructure\SimplifiedCleanArchModel.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

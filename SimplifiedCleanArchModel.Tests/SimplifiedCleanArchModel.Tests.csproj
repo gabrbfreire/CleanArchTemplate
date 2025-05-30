@@ -10,4 +10,8 @@
     <Folder Include="Application\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SimplifiedCleanArchModel.Application\SimplifiedCleanArchModel.Application.csproj" />
+  </ItemGroup>
+
 </Project>

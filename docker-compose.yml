@@ -1,6 +1,29 @@
+version: '3.8'
+
 services:
-  simplifiedcleanarchmodel.api:
-    image: ${DOCKER_REGISTRY-}simplifiedcleanarchmodelapi
+  api:
     build:
       context: .
-      dockerfile: SimplifiedCleanArchModel.Api/Dockerfile
+      dockerfile: MyApp.Api/Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - sqlserver
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__Default=Server=sqlserver;Database=MyAppDb;User=sa;Password=MyPass@123;
+    networks:
+      - myapp-net
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      SA_PASSWORD: "MyPass@123"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    networks:
+      - myapp-net
+
+networks:
+  myapp-net:

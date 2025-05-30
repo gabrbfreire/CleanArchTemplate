@@ -1,4 +1,8 @@
 
+using Microsoft.EntityFrameworkCore;
+using SimplifiedCleanArchModel.Infrastructure;
+using System;
+
 namespace SimplifiedCleanArchModel
 {
     public class Program
@@ -14,6 +18,7 @@ namespace SimplifiedCleanArchModel
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
 
             var app = builder.Build();
 
