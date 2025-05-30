@@ -3,4 +3,4 @@ services:
     image: ${DOCKER_REGISTRY-}simplifiedcleanarchmodelapi
     build:
       context: .
-      dockerfile: SimplifiedCleanArchModel/Dockerfile
+      dockerfile: SimplifiedCleanArchModel.Api/Dockerfile

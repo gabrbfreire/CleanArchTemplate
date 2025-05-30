@@ -12,10 +12,10 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["SimplifiedCleanArchModel/SimplifiedCleanArchModel.Api.csproj", "SimplifiedCleanArchModel/"]
-RUN dotnet restore "./SimplifiedCleanArchModel/SimplifiedCleanArchModel.Api.csproj"
+COPY ["SimplifiedCleanArchModel.Api/SimplifiedCleanArchModel.Api.csproj", "SimplifiedCleanArchModel.Api/"]
+RUN dotnet restore "./SimplifiedCleanArchModel.Api/SimplifiedCleanArchModel.Api.csproj"
 COPY . .
-WORKDIR "/src/SimplifiedCleanArchModel"
+WORKDIR "/src/SimplifiedCleanArchModel.Api"
 RUN dotnet build "./SimplifiedCleanArchModel.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
