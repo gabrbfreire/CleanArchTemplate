@@ -1,7 +1,6 @@
 
 using Microsoft.EntityFrameworkCore;
 using SimplifiedCleanArchModel.Infrastructure;
-using System;
 
 namespace SimplifiedCleanArchModel
 {
@@ -35,7 +34,6 @@ namespace SimplifiedCleanArchModel
 
             app.UseSwagger();
             app.UseSwaggerUI();
-            app.UseHttpsRedirection();
             app.UseAuthorization();
             app.Run();
         }
