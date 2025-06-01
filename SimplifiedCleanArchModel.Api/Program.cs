@@ -1,16 +1,13 @@
 
 using Microsoft.EntityFrameworkCore;
+using SimplifiedCleanArchModel.Application.Interfaces;
+using SimplifiedCleanArchModel.Application.Services;
 using SimplifiedCleanArchModel.Infrastructure;
 
 namespace SimplifiedCleanArchModel
 {
     public class Program
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -19,22 +16,14 @@ namespace SimplifiedCleanArchModel
             builder.Services.AddSwaggerGen();
             builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
 
-            var app = builder.Build();
+            builder.Services.AddScoped<IWeatherForecastService, WeatherForecastService>();
 
-            app.MapGet("/weatherForecast/getWeatherForecast", () =>
-            {
-                return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-                {
-                    Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    TemperatureC = Random.Shared.Next(-20, 55),
-                    Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-                })
-                .ToArray();
-            });
+            var app = builder.Build();
 
             app.UseSwagger();
             app.UseSwaggerUI();
             app.UseAuthorization();
+            app.MapControllers();
             app.Run();
         }
     }
