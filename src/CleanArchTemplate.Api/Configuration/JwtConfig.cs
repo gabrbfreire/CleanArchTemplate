@@ -25,9 +25,9 @@ public static class JwtConfig
                 ValidateAudience = true,
                 ValidateLifetime = true,
                 ValidateIssuerSigningKey = true,
-                ValidIssuer = jwtSettings["Issuer"],
-                ValidAudience = jwtSettings["Audience"],
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]))
+                ValidIssuer = jwtSettings["JwtSettings.Issuer"],
+                ValidAudience = jwtSettings["JwtSettings.Audience"],
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["JwtSettings.SecretKey"]))
             };
         });
 

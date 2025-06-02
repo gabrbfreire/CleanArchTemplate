@@ -25,18 +25,16 @@ namespace CleanArchTemplate.Infrastructure
     {
         public AppDbContext CreateDbContext(string[] args)
         {
-            IConfigurationRoot configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .Build();
+            var configuration = new ConfigurationBuilder()
+           .SetBasePath(Directory.GetCurrentDirectory())
+           .AddJsonFile("appsettings.json")
+           .Build();
 
             var builder = new DbContextOptionsBuilder<AppDbContext>();
             var connectionString = configuration.GetConnectionString("DefaultConnection");
 
-            builder.UseSqlServer(
-                connectionString,
-                b => b.MigrationsAssembly("Ambev.DeveloperEvaluation.WebApi")
-            );
+            builder.UseSqlServer(connectionString,
+                options => options.MigrationsAssembly("CleanArchTemplate.Api"));
 
             return new AppDbContext(builder.Options);
         }

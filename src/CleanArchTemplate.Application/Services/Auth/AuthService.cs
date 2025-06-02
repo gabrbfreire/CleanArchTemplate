@@ -15,7 +15,7 @@ public class AuthService : IAuthService
     private readonly JwtSettings _jwtSettings;
     private readonly List<User> _users = new()
     {
-        new User { Id = new Guid(), Username = "admin", Password = "admin" }
+        new User { Id = new Guid(), Email = "admin@admin.com", Password = "admin" }
     };
 
     public AuthService(IOptions<JwtSettings> jwtSettings)
@@ -23,9 +23,9 @@ public class AuthService : IAuthService
         _jwtSettings = jwtSettings.Value;
     }
 
-    public async Task<AuthResultDto?> Authenticate(string username, string password)
+    public async Task<AuthResultDto?> Authenticate(string email, string password)
     {
-        var user = _users.SingleOrDefault(u => u.Username == username && u.Password == password);
+        var user = _users.SingleOrDefault(u => u.Email == email && u.Password == password);
 
         if (user == null) return null;
 
