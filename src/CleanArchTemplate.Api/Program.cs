@@ -1,12 +1,12 @@
 
 using Microsoft.EntityFrameworkCore;
 using CleanArchTemplate.Api.Configuration;
-using CleanArchTemplate.Application.Interfaces;
 using CleanArchTemplate.Application.Interfaces.Auth;
-using CleanArchTemplate.Application.Services;
 using CleanArchTemplate.Application.Services.Auth;
 using CleanArchTemplate.Infrastructure;
 using Microsoft.AspNetCore.Identity;
+using CleanArchTemplate.Application.Interfaces;
+using CleanArchTemplate.Application.Services;
 
 namespace CleanArchTemplate
 {
